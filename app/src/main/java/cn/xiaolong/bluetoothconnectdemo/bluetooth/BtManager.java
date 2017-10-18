@@ -184,7 +184,7 @@ public class BtManager implements IScanCallback<BluetoothDevice> {
                         case BluetoothTransferService.STATE_NONE:
                             Logger.d("未连接");
                             mIConnectStateCallBack.disConnect();
-                            mService.start();//在连接失败后重新等待连接
+//                            mService.start();//在连接失败后重新等待连接
                             break;
                     }
                     break;
