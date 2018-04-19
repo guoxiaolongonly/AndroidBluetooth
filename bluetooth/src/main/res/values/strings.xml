@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">bluetoothmodule</string>
+    <string name="ble_not_supported">蓝牙服务不可用</string>
+</resources>
