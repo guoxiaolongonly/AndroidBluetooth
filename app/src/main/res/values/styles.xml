@@ -1,11 +1,43 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/main_blue_color</item>
+        <!--标题栏颜色-->
+        <item name="colorPrimaryDark">@color/main_blue_color</item>
+        <!--状态栏颜色-->
+        <item name="colorControlNormal">@color/main_blue_color</item>
+        <item name="android:textColorPrimary">@color/main_blue_color</item>
+        <!--<item name="android:windowIsTranslucent">false</item>-->
+        <item name="colorAccent">@color/main_blue_color</item>
+        <!--<item name="windowActionBar">false</item>-->
+        <!--防止使用默认主题-->
+        <item name="windowNoTitle">true</item>
+        <!--<item name="android:windowAnimationStyle">@style/Bright.Activity.Animation.Right</item>-->
+    </style>
+    <style name="chat_text_date_style">
+        <item name="android:padding">2dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">#bfbfbf</item>
     </style>
 
+
+    <style name="chat_content_date_style">
+        <item name="android:minHeight">50dp</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">#bfbfbf</item>
+    </style>
+
+    <style name="chat_text_name_style">
+        <item name="android:textColor">#818181</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

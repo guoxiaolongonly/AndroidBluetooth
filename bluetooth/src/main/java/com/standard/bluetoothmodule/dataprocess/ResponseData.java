@@ -9,6 +9,7 @@ package com.standard.bluetoothmodule.dataprocess;
 
 public class ResponseData<T> {
     public T data;
+    public String receiveTime;
 
     public ResponseData(T data) {
         this.data = data;

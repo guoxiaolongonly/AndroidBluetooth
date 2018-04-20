@@ -305,7 +305,7 @@ public class BtManager {
                     mIDataTransferCallBack.onReceiving(msg.arg1, msg.arg2);
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
-                    mIConnectStateCallBack.connectedToDeviceName(msg.getData().getString(Constants.DEVICE_NAME));
+                    mIConnectStateCallBack.connectedToDeviceName((BluetoothDevice) msg.getData().getParcelable(Constants.DEVICE_NAME));
                     break;
                 case Constants.MESSAGE_TOAST:
                     Toast.makeText(mActivity, msg.getData().getString(Constants.TOAST),

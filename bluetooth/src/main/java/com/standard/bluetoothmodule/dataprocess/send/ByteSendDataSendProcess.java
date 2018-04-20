@@ -60,8 +60,7 @@ public class ByteSendDataSendProcess extends BaseSendDataProcess {
         byte[] dataPart = Arrays.copyOfRange(mDatas, (currentPack - 1) * DEFAULT_DATA_SIZE,
                 currentPack * DEFAULT_DATA_SIZE > mDataLength ? mDataLength : currentPack * 1024);
         currentTransferLength += dataPart.length;
-        byte[] nameBytes = new byte[50];
-        return PackUtil.pack(nameBytes, dataPart.length, currentPack, allPack, dataPart);
+        return PackUtil.pack(0,new byte[]{}, dataPart.length, currentPack, allPack, dataPart);
     }
 
     @Override

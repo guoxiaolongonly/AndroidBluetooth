@@ -3,4 +3,26 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="main_blue_color">#3F51B5</color>
+    <color name="main_blue_35b1ff">#3F51B5</color>
+    <color name="main_gray_color">#888888</color>
+    <color name="main_black_color_999999">#999999</color>
+
+    <color name="main_tab_text_press">#4E6177</color>
+    <color name="main_tab_text_normal">#BBC4CE</color>
+    <!--切线-->
+    <color name="main_divider_color">#BBC3CE</color>
+    <!-- 重要级文字信息标题-->
+    <color name="main_black_color_333333">#333333</color>
+    <!-- 普通级导航名称和提示-->
+    <color name="main_normal_black_color">#666666</color>
+    <!-- 背景底色-->
+    <color name="main_content_color">#F2F3F5</color>
+    <!-- 辅助信息-->
+    <color name="main_hint_color">#cccccc</color>
+    <!-- 辅助信息-->
+    <color name="half_white">#80ffffff</color>
+    <color name="white_20">#32ffffff</color>
+    <color name="gray_cae3ff">#cae3ff</color>
 </resources>

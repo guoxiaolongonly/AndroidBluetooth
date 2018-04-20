@@ -1,5 +1,7 @@
 package com.standard.bluetoothmodule.callback;
 
+import android.bluetooth.BluetoothDevice;
+
 /**
  * @author xiaolong
  * @version v1.0
@@ -30,8 +32,6 @@ public interface IConnectStateCallBack {
 
     /**+
      * 连接到设备
-     *
-     * @param deviceName
      */
-    void connectedToDeviceName(String deviceName);
+    void connectedToDeviceName(BluetoothDevice bluetoothDevice);
 }
