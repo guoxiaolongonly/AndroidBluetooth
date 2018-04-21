@@ -38,16 +38,17 @@ public class BluetoothAdapter extends RecyclerView.Adapter<BluetoothAdapter.View
     }
 
     public void addItem(BluetoothDevice bluetoothDevice) {
-        if(!TextUtils.isEmpty(bluetoothDevice.getName()))
-        {
+        if (!TextUtils.isEmpty(bluetoothDevice.getName())) {
             mBluetoothDeviceList.add(bluetoothDevice);
             notifyDataSetChanged();
         }
     }
+
     public void clearData() {
         mBluetoothDeviceList.clear();
         notifyDataSetChanged();
     }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.setData(mBluetoothDeviceList.get(position), position);
@@ -62,7 +63,10 @@ public class BluetoothAdapter extends RecyclerView.Adapter<BluetoothAdapter.View
         return mBluetoothDeviceList.size();
     }
 
-    public void addItem() {
+    public void addAll(List<BluetoothDevice> bluetoothDevices) {
+        mBluetoothDeviceList.clear();
+        mBluetoothDeviceList.addAll(bluetoothDevices);
+        notifyDataSetChanged();
     }
 
 
@@ -77,13 +81,12 @@ public class BluetoothAdapter extends RecyclerView.Adapter<BluetoothAdapter.View
         }
 
         public void setData(final BluetoothDevice data, int position) {
-            tvBluetoothName.setText(data.getName());
-            tvBluetoothAddress.setText(data.getAddress());
+            tvBluetoothName.setText("名称：" + data.getName());
+            tvBluetoothAddress.setText("MAC：" + data.getAddress());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(mOnClickListener!=null)
-                    {
+                    if (mOnClickListener != null) {
                         v.setTag(data);
                         mOnClickListener.onClick(v);
                     }

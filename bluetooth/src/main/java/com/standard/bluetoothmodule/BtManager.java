@@ -18,6 +18,7 @@ import com.standard.bluetoothmodule.callback.IConnectStateCallBack;
 import com.standard.bluetoothmodule.callback.IDataTransferCallBack;
 import com.standard.bluetoothmodule.callback.IScanCallback;
 import com.standard.bluetoothmodule.constant.Constants;
+import com.standard.bluetoothmodule.dataprocess.ResponseData;
 import com.standard.bluetoothmodule.dataprocess.send.BaseSendDataProcess;
 import com.standard.bluetoothmodule.dataprocess.send.ByteSendDataSendProcess;
 import com.standard.bluetoothmodule.dataprocess.send.FileSendDataProcess;
@@ -161,7 +162,6 @@ public class BtManager {
      *
      * @param iDataTransferCallBack
      */
-    @Deprecated
     public void setDataTransferCallBack(IDataTransferCallBack iDataTransferCallBack) {
         mDeviceHandler.setIDataTransferCallBack(iDataTransferCallBack);
     }
@@ -297,7 +297,7 @@ public class BtManager {
                     }
                     break;
                 case Constants.MESSAGE_READ:
-                    mIDataTransferCallBack.receiveData(msg.obj.toString());
+                    mIDataTransferCallBack.receiveData((ResponseData) msg.obj);
                     break;
                 //receiving
                 case Constants.MESSAGE_READING:

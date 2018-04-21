@@ -3,10 +3,12 @@ package com.standard.bluetoothmodule.dataprocess;
 import android.os.Handler;
 
 import com.standard.bluetoothmodule.constant.Constants;
+import com.standard.bluetoothmodule.dataprocess.send.FileSendDataProcess;
 import com.standard.bluetoothmodule.util.BitmapUtil;
 import com.standard.bluetoothmodule.util.ByteUtil;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -79,6 +81,20 @@ public class DataProcessHandler {
         mAllPack = ByteUtil.bytesToInt2(allPackBytes, 0);
         mDataLength = ByteUtil.bytesToInt2(dataLengthBytes, 0);
         currentDataLength = 0;
+        if (mCurrentPack == 1) {
+            try {
+                if (mDataProcess != null && mDataProcess instanceof FileDataReadProcess) {
+                    ((FileDataReadProcess) mDataProcess).closeStream();
+                }
+                if (fileNameBytesLength > 0) {
+                    mDataProcess = new FileDataReadProcess(cacheFilePath);
+                } else {
+                    mDataProcess = new ByteDataReadProcess();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -100,6 +116,7 @@ public class DataProcessHandler {
                     cacheHeader = Arrays.copyOf(cacheHeader, realHeaderLength);
                 }
                 cacheHeader[readIndex] = data;
+                readIndex++;
 
                 if (isHeaderReadUp()) {
                     byte[] header = Arrays.copyOf(cacheHeader, 2);
@@ -147,14 +164,6 @@ public class DataProcessHandler {
             currentDataLength = 0;
             readIndex = 0;
         } else {
-            if (mDataProcess instanceof FileDataReadProcess) {
-                try {
-                    ((FileDataReadProcess) mDataProcess).closeStream();
-                    BitmapUtil.rotateImageAndSave(cacheFilePath.getPath(), 180);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
             mHandler.obtainMessage(Constants.MESSAGE_READ, mDataProcess.getResponseResult())
                     .sendToTarget();
             reset();
@@ -182,7 +191,7 @@ public class DataProcessHandler {
     }
 
     public boolean isHeaderReadUp() {
-        return readIndex > cacheHeader.length;
+        return readIndex >= cacheHeader.length;
     }
 
     public boolean isReadEnd() {

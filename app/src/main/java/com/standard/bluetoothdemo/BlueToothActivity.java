@@ -12,10 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.standard.bluetoothdemo.adapter.BluetoothAdapter;
+import com.standard.bluetoothdemo.widget.ExpandableLayout;
 import com.standard.bluetoothmodule.BtManager;
 import com.standard.bluetoothmodule.callback.IConnectStateCallBack;
 import com.standard.bluetoothmodule.callback.IScanCallback;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -27,28 +30,45 @@ import java.util.List;
 
 public class BlueToothActivity extends AppCompatActivity {
     private BtManager btManager;
-    private RecyclerView rvBluetoothList;
     private TextView tvTitle;
-    private BluetoothAdapter mBluetoothAdapter;
+    private BluetoothAdapter mSurroundBluetoothAdapter;
+    private BluetoothAdapter mBondBluetoothAdapter;
     private BluetoothDevice currentConnectDevice;
+    private ExpandableLayout exlBond;
+    private ExpandableLayout exlSurround;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bluetooth);
-        initBluetooth();
         initView();
+        initBluetooth();
         setListener();
     }
 
 
     private void initView() {
         tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.setText("基佬蓝牙好友列表");
-        rvBluetoothList = findViewById(R.id.rvBluetoothList);
-        mBluetoothAdapter = new BluetoothAdapter(this);
-        rvBluetoothList.setAdapter(mBluetoothAdapter);
-        rvBluetoothList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        tvTitle.setText("蓝牙列表");
+        exlBond = findViewById(R.id.exlBond);
+        exlSurround = findViewById(R.id.exlSurround);
+        initList();
+    }
+
+    private void initList() {
+        RecyclerView rvSurroundBluthoothList = exlSurround.findViewById(R.id.rvContent);
+        TextView surroundTitle = exlSurround.getHeaderLayout().findViewById(R.id.tvHeader);
+        surroundTitle.setText("附近蓝牙列表（选择连接）");
+        mSurroundBluetoothAdapter = new BluetoothAdapter(this);
+        rvSurroundBluthoothList.setAdapter(mSurroundBluetoothAdapter);
+        rvSurroundBluthoothList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        RecyclerView rvBondBluetoothList = exlBond.findViewById(R.id.rvContent);
+        TextView bondTitle = exlBond.getHeaderLayout().findViewById(R.id.tvHeader);
+        bondTitle.setText("已连接过蓝牙列表");
+        mBondBluetoothAdapter = new BluetoothAdapter(this);
+        rvBondBluetoothList.setAdapter(mBondBluetoothAdapter);
+        rvBondBluetoothList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 
     private void initBluetooth() {
@@ -60,7 +80,7 @@ public class BlueToothActivity extends AppCompatActivity {
         btManager.setIScanCallback(new IScanCallback() {
             @Override
             public void discoverDevice(BluetoothDevice bluetoothDevice, short rssi) {
-                mBluetoothAdapter.addItem(bluetoothDevice);
+                mSurroundBluetoothAdapter.addItem(bluetoothDevice);
             }
 
             @Override
@@ -86,7 +106,7 @@ public class BlueToothActivity extends AppCompatActivity {
 
             @Override
             public void disConnect() {
-
+                currentConnectDevice = null;
             }
 
             @Override
@@ -100,8 +120,8 @@ public class BlueToothActivity extends AppCompatActivity {
                 launchActivity(device);
             }
         });
-        btManager.scanBluetooth();
-        mBluetoothAdapter.setOnClickListener(new View.OnClickListener() {
+        scan();
+        mSurroundBluetoothAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BluetoothDevice bluetoothDevice = (BluetoothDevice) v.getTag();
@@ -112,6 +132,23 @@ public class BlueToothActivity extends AppCompatActivity {
                 }
             }
         });
+        findViewById(R.id.tvRefresh).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scan();
+            }
+        });
+    }
+
+    private void scan() {
+        mSurroundBluetoothAdapter.clearData();
+        btManager.scanBluetooth();
+        List<BluetoothDevice> bluetoothDevices = new ArrayList<>();
+        Iterator<BluetoothDevice> iterator = btManager.getBondBlueToothList().iterator();
+        while (iterator.hasNext()) {
+            bluetoothDevices.add(iterator.next());
+        }
+        mBondBluetoothAdapter.addAll(bluetoothDevices);
     }
 
     private void launchActivity(BluetoothDevice bluetoothDevice) {

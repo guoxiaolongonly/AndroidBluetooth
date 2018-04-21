@@ -205,7 +205,7 @@ public class BluetoothTransferService {
         // Send the name of the connected device back to the UI Activity
         Message msg = mHandler.obtainMessage(Constants.MESSAGE_DEVICE_NAME);
         Bundle bundle = new Bundle();
-        bundle.putParcelable(Constants.DEVICE_NAME,  device);
+        bundle.putParcelable(Constants.DEVICE_NAME, device);
         msg.setData(bundle);
         mHandler.sendMessage(msg);
         // Update UI title
@@ -289,6 +289,7 @@ public class BluetoothTransferService {
      * Indicate that the connection was lost and notify the UI Activity.
      */
     private void connectionLost() {
+        stop();
         // Send a failure message back to the Activity
         Message msg = mHandler.obtainMessage(Constants.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
@@ -507,7 +508,7 @@ public class BluetoothTransferService {
             Log.i(TAG, "BEGIN mConnectedThread");
             // Keep listening to the InputStream while connected
 
-            while (mState == STATE_CONNECTED) {
+            while (mState == STATE_CONNECTED && !Thread.interrupted()) {
                 try {
                     dataProcessHandler.readByte((byte) (mmInputStream.read() & 0xff));
                 } catch (IOException e) {

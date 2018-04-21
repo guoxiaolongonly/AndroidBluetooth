@@ -1,6 +1,8 @@
 package com.standard.bluetoothmodule.callback;
 
 
+import com.standard.bluetoothmodule.dataprocess.ResponseData;
+
 /**
  * @author xiaolong
  * @version v1.0
@@ -23,7 +25,7 @@ public interface IDataTransferCallBack  {
      *
      * @param result
      */
-    void receiveData(String result);
+    void receiveData(ResponseData result);
 
     /**
      * 接收进度

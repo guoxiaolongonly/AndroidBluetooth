@@ -11,7 +11,7 @@
         android:layout_marginTop="5dp">
 
         <ImageView
-            android:id="@+id/iv_userhead"
+            android:id="@+id/ivHeader"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_alignParentLeft="true"
@@ -20,34 +20,34 @@
             android:focusable="false" />/
 
         <TextView
-            android:id="@+id/tv_chatcontent"
+            android:id="@+id/tvContent"
             style="@style/chat_content_date_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv_userhead"
+            android:layout_toRightOf="@id/ivHeader"
             android:background="@drawable/chatfrom_bg" />
 
 
         <TextView
-            android:id="@+id/tv_username"
+            android:id="@+id/tvUserName"
             style="@style/chat_text_name_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/iv_userhead"
-            android:layout_toLeftOf="@+id/tv_chatcontent"
+            android:layout_below="@id/ivHeader"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="2dp"
+            android:layout_toLeftOf="@+id/tvContent"
             android:text="张精明" />
 
         <TextView
-            android:id="@+id/tv_createtime"
+            android:id="@+id/tvMessageTime"
             style="@style/chat_text_date_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/iv_userhead"
+            android:layout_below="@id/ivHeader"
             android:text="2016-05-05 14:36:20" />
 
     </RelativeLayout>
