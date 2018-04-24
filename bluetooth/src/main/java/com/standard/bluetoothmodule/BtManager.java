@@ -67,7 +67,7 @@ public class BtManager {
      * @param activity
      */
     public static void init(Activity activity) {
-        if (instance == null) {
+        if (instance == null || instance.mActivity == null) {
             synchronized (BtManager.class) {
                 if (instance == null) {
                     instance = new BtManager(activity);

@@ -19,7 +19,7 @@ public class LaunchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bluetooth);
+        setContentView(R.layout.activity_launch);
         if (Build.VERSION.SDK_INT >= 23) { //针对6.0以后的版本加权限判断
             permissionTool = new PermissionUtil.PermissionTool(new PermissionUtil.PermissionListener() {
                 @Override

@@ -11,6 +11,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+/**
+ * @author CRAWLER
+ */
 public class PermissionUtil {
     private static final String TAG = "PermissionUtil";
     public static final int REQUEST_CODE_REQUEST_PERMISSION = 1027;
@@ -18,7 +21,8 @@ public class PermissionUtil {
     private static final int REQUEST_CODE_REQUEST_SETTING = 1028;
 
     public interface PermissionListener {
-        void allGranted();                                          //申请的权限已全部被允许;
+        //申请的权限已全部被允许;
+        void allGranted();
     }
 
     public static class PermissionTool {
@@ -34,14 +38,16 @@ public class PermissionUtil {
 
         /**
          * 需要进行检测的权限数组
+         *  获取相机权限
          */
-        public String[] qrCodeNeedPermissions = {       //获取相机权限
+        public String[] qrCodeNeedPermissions = {
                 Manifest.permission.CAMERA
         };
         /**
          * 需要进行检测的权限数组
+         * 获取手机设备号用
          */
-        public String[] requestNeedPermissions = {       //获取手机设备号用
+        public String[] requestNeedPermissions = {
                 Manifest.permission.READ_PHONE_STATE
         };
 
