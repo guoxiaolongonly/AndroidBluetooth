@@ -1,6 +1,8 @@
 [![CSDN](https://img.shields.io/badge/CSDN-@xiaolongonly-blue.svg?style=flat)](http://blog.csdn.net/guoxiaolongonly)
 [![PersonBlog](https://img.shields.io/badge/PersonBlog-@xiaolongonly-blue.svg?style=flat)](http://xiaolongonly.cn/)
 
+[界面展示](https://github.com/guoxiaolongonly/AndroidBluetooth/blob/master/screen/Screenrecorder-2018-04-24-11-31-14-928.mp4)
+（将就着视频下载了看一下~~后续会改成gif）
 ## Android蓝牙通讯封装
 
 基于简单配对模式RFCOMM连接方式写的一个蓝牙通讯模块。
