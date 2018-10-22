@@ -13,7 +13,7 @@
 	推荐使用一个全局的Activity做初始化，因为在整个生命周期其实蓝牙只需要连接一次。
 	
 ```java
-1.BtManager.init(xxActivity);
+BtManager.init(xxActivity);
 ```
 2.获取BtManager对象 
 ``` java
@@ -21,8 +21,8 @@ btManager= BtManager.getInstance();
 ```
 3.设置扫描回调
 
-```java
-btManager.setIScanCallback(new IScanCallback() {
+<iframe
+  src="https://carbon.now.sh/embed/?bg=rgba(52,77,98,1)&t=base16-dark&wt=none&l=text/x-java&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&lh=133%&si=false&code=btManager.setIScanCallback(new IScanCallback() {
             @Override
             public void discoverDevice(BluetoothDevice bluetoothDevice, short rssi) 			{
                 mSurroundBluetoothAdapter.addItem(bluetoothDevice);
@@ -38,10 +38,15 @@ btManager.setIScanCallback(new IScanCallback() {
 
             }
         })
-```
+&es=2x&wm=false&ts=false"
+  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
+  sandbox="allow-scripts allow-same-origin">
+</iframe>
+
 4.设置连接状态回调
-```java
-btManager.setConnectStateCallback(new IConnectStateCallBack() {
+
+<iframe
+  src="https://carbon.now.sh/embed/?bg=rgba(52,77,98,1)&t=base16-dark&wt=none&l=text/x-java&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&lh=133%&si=false&code=btManager.setConnectStateCallback(new IConnectStateCallBack() {
             @Override
             public void connecting() {
 
@@ -67,8 +72,12 @@ btManager.setConnectStateCallback(new IConnectStateCallBack() {
                 currentConnectDevice = device;
                 launchActivity(device);
             }
-        });
-```
+        });&es=2x&wm=false&ts=false"
+  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
+  sandbox="allow-scripts allow-same-origin">
+</iframe>
+
+
 4.扫描设备
 ```java
   btManager.scanBluetooth();
