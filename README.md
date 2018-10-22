@@ -21,8 +21,7 @@ btManager= BtManager.getInstance();
 ```
 3.设置扫描回调
 
-<iframe
-  src="https://carbon.now.sh/embed/?bg=rgba(52,77,98,1)&t=base16-dark&wt=none&l=text/x-java&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&lh=133%&si=false&code=btManager.setIScanCallback(new IScanCallback() {
+<iframe src="https://carbon.now.sh/embed/?bg=rgba(52,77,98,1)&t=base16-dark&wt=none&l=text/x-java&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&lh=133%&si=false&code=btManager.setIScanCallback(new IScanCallback() {
             @Override
             public void discoverDevice(BluetoothDevice bluetoothDevice, short rssi) 			{
                 mSurroundBluetoothAdapter.addItem(bluetoothDevice);
@@ -37,16 +36,11 @@ btManager= BtManager.getInstance();
             public void scanFinish(List<BluetoothDevice> bluetoothList) {
 
             }
-        })
-&es=2x&wm=false&ts=false"
-  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
-</iframe>
+        })&es=2x&wm=false&ts=false"style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"sandbox="allow-scripts allow-same-origin"></iframe>
 
 4.设置连接状态回调
 
-<iframe
-  src="https://carbon.now.sh/embed/?bg=rgba(52,77,98,1)&t=base16-dark&wt=none&l=text/x-java&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&lh=133%&si=false&code=btManager.setConnectStateCallback(new IConnectStateCallBack() {
+<iframe src="https://carbon.now.sh/embed/?bg=rgba(52,77,98,1)&t=base16-dark&wt=none&l=text/x-java&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&lh=133%&si=false&code=btManager.setConnectStateCallback(new IConnectStateCallBack() {
             @Override
             public void connecting() {
 
@@ -73,8 +67,7 @@ btManager= BtManager.getInstance();
                 launchActivity(device);
             }
         });&es=2x&wm=false&ts=false"
-  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
+  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"sandbox="allow-scripts allow-same-origin">
 </iframe>
 
 
