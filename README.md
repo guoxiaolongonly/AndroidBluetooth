@@ -21,22 +21,7 @@ btManager= BtManager.getInstance();
 ```
 3.设置扫描回调
 
-<iframe src="https://carbon.now.sh/embed/?bg=rgba(52,77,98,1)&t=base16-dark&wt=none&l=text/x-java&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&lh=133%&si=false&code=btManager.setIScanCallback(new IScanCallback() {
-            @Override
-            public void discoverDevice(BluetoothDevice bluetoothDevice, short rssi) 			{
-                mSurroundBluetoothAdapter.addItem(bluetoothDevice);
-            }
-
-            @Override
-            public void scanTimeout() {
-                Toast.makeText(BlueToothActivity.this, "扫描超时！", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void scanFinish(List<BluetoothDevice> bluetoothList) {
-
-            }
-        })&es=2x&wm=false&ts=false"style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"sandbox="allow-scripts allow-same-origin"></iframe>
+<iframe src="https://carbon.now.sh/embed/?bg=rgba(52%2C77%2C98%2C1)&t=base16-dark&wt=none&l=text%2Fx-java&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=48px&ph=32px&ln=false&fm=Hack&fs=14px&lh=133%25&si=false&code=btManager.setIScanCallback(new%2520IScanCallback()%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2540Override%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520public%2520void%2520discoverDevice(BluetoothDevice%2520bluetoothDevice%252C%2520short%2520rssi)%2520%2509%2509%2509%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520mSurroundBluetoothAdapter.addItem(bluetoothDevice)%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2540Override%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520public%2520void%2520scanTimeout()%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520Toast.makeText(BlueToothActivity.this%252C%2520%2522%25E6%2589%25AB%25E6%258F%258F%25E8%25B6%2585%25E6%2597%25B6%25EF%25BC%2581%2522%252C%2520Toast.LENGTH_LONG).show()%253B%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2540Override%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520public%2520void%2520scanFinish(List%253CBluetoothDevice%253E%2520bluetoothList)%2520%257B%250A%250A%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%2520%2520%2520%2520%257D)%250A&es=2x&wm=false&ts=false" style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;" sandbox="allow-scripts allow-same-origin"></iframe>
 
 4.设置连接状态回调
 
